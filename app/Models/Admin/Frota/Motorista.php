@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin\Frota;
 
 use Illuminate\Database\Eloquent\Model;
 

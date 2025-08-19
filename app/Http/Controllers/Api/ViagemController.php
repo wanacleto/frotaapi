@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LocalSaida;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Viagem;
+use App\Models\Admin\Frota\Viagem;
 
 class ViagemController extends Controller
 {

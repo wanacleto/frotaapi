@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\ViagemDestino;
-use App\Models\Viagem;
+use App\Models\Admin\Frota\ViagemDestino;
+use App\Models\Admin\Frota\Viagem;
 use App\Models\LocalChegada;
 
 class ViagemDestinoController extends Controller

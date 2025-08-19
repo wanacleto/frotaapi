@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\SolicitarManutencao;
+use App\Models\Admin\Frota\SolicitarManutencao;
 
 class SolicitarManutencaoController extends Controller
 {
