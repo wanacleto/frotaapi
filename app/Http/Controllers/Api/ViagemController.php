@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\LocalSaida;
+use App\Models\Admin\Frota\LocalSaida;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Admin\Frota\Viagem;
@@ -62,7 +62,8 @@ class ViagemController extends Controller
         return response()->json($viagem, 200);
     }
 
-    public function viagemSaida(Request $request){
+    public function viagemSaida(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'viagem_id' => 'required',
             'cep' => 'required',
@@ -84,5 +85,33 @@ class ViagemController extends Controller
         ]);
 
         return response()->json($saida, 201);
+    }
+
+    public function getViagemSaida(Request $request)
+    {
+        $viagem_id = $request->input("viagem_id");
+
+        $viagem_saida = LocalSaida::where("viagem_id", $viagem_id)->first();
+
+        return response()->json($viagem_saida);
+    }
+
+    public function cancelarViagem(Request $request)
+    {
+        $viagem_id = $request->input("viagem_id");
+        $nota = $request->input("nota");
+
+        $viagem = Viagem::find($viagem_id);
+        if ($viagem) {
+            $viagem->status = "Cancelado";
+            $viagem->nota = $nota;
+            $viagem->save();
+        } else {
+            return response()->json([
+                "error" => "erro ao atuallizar status da viagem",
+            ], 404);
+        }
+
+        return response()->json($viagem, 201);
     }
 }

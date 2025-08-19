@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Admin\Frota\ViagemDestino;
 use App\Models\Admin\Frota\Viagem;
-use App\Models\LocalChegada;
+use App\Models\Admin\Frota\LocalChegada;
 
 class ViagemDestinoController extends Controller
 {

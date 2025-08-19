@@ -23,10 +23,10 @@ Route::post("/auth/login", [AuthController::class, 'login']);
 Route::post("/auth/logout", [AuthController::class, 'logout']);
 Route::post("/auth/refresh", [AuthController::class, 'refresh']);
 Route::post("/user", [AuthController::class, 'create']);
-Route::get("/user", [UserController::class, 'index']);
+Route::get("/user", [UserController::class, 'read']);
 //motorista
 Route::resource('/motorista', MotoristaController::class);
-Route::post('/motorista/dados',[ MotoristaController::class, "getMotorista"]);
+Route::post('/motorista/dados', [MotoristaController::class, "getMotorista"]);
 //profissional
 Route::resource('/profissional', ProfissionalController::class);
 Route::post('/profissional/detalhes', [ProfissionalController::class, "profissionalDetalhes"]);
@@ -40,6 +40,8 @@ Route::post('/veiculo/placa', [VeiculoController::class, 'getVeiculoByPlaca']);
 Route::resource('/viagem', ViagemController::class);
 Route::post('/viagem/detalhes', [ViagemController::class, "viagemDetalhes"]);
 Route::post('/viagem/local_saida', [ViagemController::class, "viagemSaida"]);
+Route::post('/viagem/cancelar', [ViagemController::class, "cancelarViagem"]);
+Route::get('/viagem/local_saida/detalhes', [ViagemController::class, "getViagemSaida"]);
 //viagem destino
 Route::resource('/viagem_destino', controller: ViagemDestinoController::class);
 Route::post('/viagem_destino/local_chegada', [ViagemController::class, "viagemDestinoChegada"]);
@@ -47,8 +49,10 @@ Route::post('/viagem_destino/local_chegada', [ViagemController::class, "viagemDe
 Route::resource('/abastecimento', controller: AbastecimentoController::class);
 //vistoria
 Route::resource('/vistoria', controller: VistoriaController::class);
+Route::post('/vistoria/veiculo', [VistoriaController::class, "getVistoriaVeiculo"]);
 Route::resource('/vistoria_item', controller: VistoriaItemController::class);
 Route::resource('/item', controller: ItemController::class);
 //manutencao
 Route::resource('/solicitar_manutencao', controller: SolicitarManutencaoController::class);
 Route::resource('/tipo_manutencao', controller: TipoManutencaoController::class);
+Route::post('/manutencao/veiculo', [SolicitarManutencaoController::class, "getManutencaoVeiculo"]);
