@@ -11,3 +11,12 @@ git push -u origin main
 git remote add origin https://github.com/wanacleto/frotaapi.git
 git branch -M main
 git push -u origin main
+
+
+....
+
+branch
+- master (producao)
+- main (homologacao)
+- diogo
+- wanger

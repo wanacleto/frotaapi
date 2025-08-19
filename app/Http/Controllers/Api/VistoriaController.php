@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Vistoria;
+use Carbon\Carbon;
 
 class VistoriaController extends Controller
 {
@@ -42,13 +43,15 @@ class VistoriaController extends Controller
             ], 400);
         }
 
+        $data = \Carbon\Carbon::createFromFormat('d/m/Y', $request->data_vistoria)->format('Y-m-d');
+
         $vistoria = Vistoria::create([
             'motorista_id' => $request->input('motorista_id'),
             'veiculo_id' => $request->input('veiculo_id'),
-            'data_vistoria' => $request->input('data_vistoria'),
+            'data_vistoria' => Carbon::createFromFormat('d/m/Y', $request->input('data_vistoria'))->format('Y-m-d'),
             'km_vistoria' => $request->input('km_vistoria'),
             'km_troca_oleo' => $request->input('km_troca_oleo'),
-            'data_troca_oleo' => $request->input('data_troca_oleo'),
+            'data_troca_oleo' => Carbon::createFromFormat('d/m/Y', $request->input('data_troca_oleo'))->format('Y-m-d'),
             'documento' => $request->input('documento'),
             'cartao_abastecimento' => $request->input('cartao_abastecimento'),
             'combustivel' => $request->input('combustivel'),
